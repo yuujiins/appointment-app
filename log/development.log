@@ -1,0 +1,163 @@
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE DATABASE "appointment_app_development" ENCODING = 'unicode'[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE DATABASE "appointment_app_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "roles" CASCADE[0m
+  [1m[35m (28.6ms)[0m  [1m[35mCREATE TABLE "roles" ("id" bigserial primary key, "role_name" character varying, "is_deleted" boolean, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "user_roles" CASCADE[0m
+  [1m[35m (6.5ms)[0m  [1m[35mCREATE TABLE "user_roles" ("id" bigserial primary key, "user_id" bigint NOT NULL, "role_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (5.2ms)[0m  [1m[35mCREATE INDEX "index_user_roles_on_role_id" ON "user_roles" ("role_id")[0m
+  [1m[35m (4.9ms)[0m  [1m[35mCREATE INDEX "index_user_roles_on_user_id" ON "user_roles" ("user_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (10.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "last_name" character varying, "first_name" character varying, "middle_name" character varying, "address" character varying, "email" character varying, "contact_number" character varying, "is_deleted" boolean, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "password_digest" character varying)[0m
+  [1m[35m (5.4ms)[0m  [1m[35mALTER TABLE "user_roles" ADD CONSTRAINT "fk_rails_3369e0d5fc"
+FOREIGN KEY ("role_id")
+  REFERENCES "roles" ("id")
+[0m
+  [1m[35m (2.5ms)[0m  [1m[35mALTER TABLE "user_roles" ADD CONSTRAINT "fk_rails_318345354e"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (11.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20230402122618)[0m
+  [1m[35m (1.9ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20230402122307),
+(20230402122336),
+(20230402122353);
+
+[0m
+  [1m[35m (9.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-04-02 13:26:20.599635"], ["updated_at", "2023-04-02 13:26:20.599635"]]
+  [1m[36mTRANSACTION (2.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "942d7fa34404c022b133f2e16c9388a302fcd47f"], ["created_at", "2023-04-02 13:26:20.618039"], ["updated_at", "2023-04-02 13:26:20.618039"]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "roles" CASCADE[0m
+  [1m[35m (25.7ms)[0m  [1m[35mCREATE TABLE "roles" ("id" bigserial primary key, "role_name" character varying, "is_deleted" boolean, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "user_roles" CASCADE[0m
+  [1m[35m (6.1ms)[0m  [1m[35mCREATE TABLE "user_roles" ("id" bigserial primary key, "user_id" bigint NOT NULL, "role_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (5.3ms)[0m  [1m[35mCREATE INDEX "index_user_roles_on_role_id" ON "user_roles" ("role_id")[0m
+  [1m[35m (5.4ms)[0m  [1m[35mCREATE INDEX "index_user_roles_on_user_id" ON "user_roles" ("user_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (9.6ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "last_name" character varying, "first_name" character varying, "middle_name" character varying, "address" character varying, "email" character varying, "contact_number" character varying, "is_deleted" boolean, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, "password_digest" character varying)[0m
+  [1m[35m (4.5ms)[0m  [1m[35mALTER TABLE "user_roles" ADD CONSTRAINT "fk_rails_3369e0d5fc"
+FOREIGN KEY ("role_id")
+  REFERENCES "roles" ("id")
+[0m
+  [1m[35m (2.6ms)[0m  [1m[35mALTER TABLE "user_roles" ADD CONSTRAINT "fk_rails_318345354e"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35m (12.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20230402122618)[0m
+  [1m[35m (2.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20230402122307),
+(20230402122336),
+(20230402122353);
+
+[0m
+  [1m[35m (10.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-04-02 13:26:20.808201"], ["updated_at", "2023-04-02 13:26:20.808201"]]
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Update (0.3ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2023-04-02 13:26:20.847354"], ["key", "environment"]]
+  [1m[36mTRANSACTION (2.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "942d7fa34404c022b133f2e16c9388a302fcd47f"], ["created_at", "2023-04-02 13:26:20.861756"], ["updated_at", "2023-04-02 13:26:20.861756"]]
+  [1m[36mTRANSACTION (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7751926042421814750)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(7751926042421814750)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2023-04-02 21:27:27 +0800
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 51.6ms | Allocations: 460)
+  Rendered layout layouts/application.html.erb (Duration: 8739.6ms | Allocations: 169813)
+Completed 200 OK in 9176ms (Views: 8881.3ms | ActiveRecord: 0.0ms | Allocations: 175144)
+
+
+Started GET "/" for 127.0.0.1 at 2023-04-02 21:32:50 +0800
+Processing by HomeController#index as HTML
+  Rendering layout layouts/home.erb
+  Rendering home/index.html.erb within layouts/home
+  Rendered home/index.html.erb within layouts/home (Duration: 8.0ms | Allocations: 107)
+  Rendered layout layouts/home.erb (Duration: 343.4ms | Allocations: 12182)
+Completed 200 OK in 447ms (Views: 353.1ms | ActiveRecord: 0.0ms | Allocations: 13060)
+
+
+  
+ActionController::RoutingError (No route matches [GET] "/kit-free.css.map"):
+  
+Started GET "/users/" for 127.0.0.1 at 2023-04-02 21:37:23 +0800
+Processing by UsersController#index as HTML
+Filter chain halted as :authorize_request rendered or redirected
+Completed 401 Unauthorized in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 541)
+
+
+  
+ActionController::RoutingError (No route matches [GET] "/kit-free.css.map"):
+  
+Started GET "/" for 127.0.0.1 at 2023-04-02 21:45:28 +0800
+Processing by HomeController#index as HTML
+  Rendering layout layouts/home.erb
+  Rendering home/index.html.erb within layouts/home
+  Rendered home/index.html.erb within layouts/home (Duration: 9.0ms | Allocations: 102)
+  Rendered layout layouts/home.erb (Duration: 581.3ms | Allocations: 14602)
+Completed 200 OK in 695ms (Views: 590.9ms | Allocations: 15428)
+
+
+  
+ActionController::RoutingError (No route matches [GET] "/kit-free.css.map"):
+  
+Started POST "/users/" for 127.0.0.1 at 2023-04-02 21:46:14 +0800
+Processing by UsersController#create as JSON
+  Parameters: {"last_name"=>"Dela Cruz", "first_name"=>"Juan", "middle_name"=>"Santos", "address"=>"Tarlac city", "contact_number"=>"09123456789", "email"=>"jdelacruz@mailinator.com", "password"=>"[FILTERED]", "user"=>{"last_name"=>"Dela Cruz", "first_name"=>"Juan", "middle_name"=>"Santos", "address"=>"Tarlac city", "email"=>"jdelacruz@mailinator.com", "contact_number"=>"09123456789"}}
+[31mUnpermitted parameter: :user. Context: { controller: UsersController, action: create, request: #<ActionDispatch::Request:0x00007f22780721b8>, params: {"last_name"=>"Dela Cruz", "first_name"=>"Juan", "middle_name"=>"Santos", "address"=>"Tarlac city", "contact_number"=>"09123456789", "email"=>"jdelacruz@mailinator.com", "password"=>"[FILTERED]", "controller"=>"users", "action"=>"create", "user"=>{"last_name"=>"Dela Cruz", "first_name"=>"Juan", "middle_name"=>"Santos", "address"=>"Tarlac city", "email"=>"jdelacruz@mailinator.com", "contact_number"=>"09123456789"}} }[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("last_name", "first_name", "middle_name", "address", "email", "contact_number", "is_deleted", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING "id"[0m  [["last_name", "Dela Cruz"], ["first_name", "Juan"], ["middle_name", "Santos"], ["address", "Tarlac city"], ["email", "jdelacruz@mailinator.com"], ["contact_number", "09123456789"], ["is_deleted", nil], ["created_at", "2023-04-02 13:46:14.821297"], ["updated_at", "2023-04-02 13:46:14.821297"], ["password_digest", "[FILTERED]"]]
+  ↳ app/controllers/users_controller.rb:20:in `create'
+  [1m[36mTRANSACTION (9.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:20:in `create'
+Completed 201 Created in 209ms (Views: 0.3ms | ActiveRecord: 16.9ms | Allocations: 21728)
+
+
+Started GET "/" for 127.0.0.1 at 2023-04-02 21:49:30 +0800
+Processing by HomeController#index as HTML
+  Rendering layout layouts/home.erb
+  Rendering home/index.html.erb within layouts/home
+  Rendered home/index.html.erb within layouts/home (Duration: 0.1ms | Allocations: 7)
+  Rendered layout layouts/home.erb (Duration: 566.2ms | Allocations: 13552)
+Completed 200 OK in 677ms (Views: 568.3ms | ActiveRecord: 0.0ms | Allocations: 13886)
+
+
+  
+ActionController::RoutingError (No route matches [GET] "/kit-free.css.map"):
+  
+Started POST "/auth/login" for 127.0.0.1 at 2023-04-02 21:49:33 +0800
+  
+ActionController::RoutingError (No route matches [POST] "/auth/login"):
+  
+Started POST "/auth/login" for 127.0.0.1 at 2023-04-02 21:50:37 +0800
+Processing by AuthenticationController#login as JSON
+  Parameters: {"email"=>"jdelacruz@mailinator.com", "password"=>"[FILTERED]", "authentication"=>{"email"=>"jdelacruz@mailinator.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "jdelacruz@mailinator.com"], ["LIMIT", 1]]
+  ↳ app/controllers/authentication_controller.rb:7:in `login'
+Completed 200 OK in 222ms (Views: 0.3ms | ActiveRecord: 2.4ms | Allocations: 8753)
+
+

@@ -13,38 +13,38 @@
                         <div class="text-start" ng-form="signupForm">
                             <div class="input-group input-group-outline my-3">
                                 <label class="form-label">Last Name</label>
-                                <input type="text" class="form-control" autocomplete="off">
+                                <input ng-model="user.last_name" type="text" class="form-control" autocomplete="off">
                             </div>
                             <div class="input-group input-group-outline my-3">
                                 <label class="form-label">First Name</label>
-                                <input type="text" class="form-control" autocomplete="off">
+                                <input type="text" ng-model="user.first_name" class="form-control" autocomplete="off">
                             </div>
                             <div class="input-group input-group-outline my-3">
                                 <label class="form-label">Middle Name</label>
-                                <input type="text" class="form-control" autocomplete="off">
+                                <input type="text" ng-model="user.middle_name" class="form-control" autocomplete="off">
                             </div>
                             <div class="input-group input-group-outline my-3">
                                 <label class="form-label">Address</label>
-                                <input type="text" class="form-control" autocomplete="off">
+                                <input type="text" ng-model="user.address" class="form-control" autocomplete="off">
                             </div>
                             <div class="input-group input-group-outline my-3">
                                 <label class="form-label">Contact Number</label>
-                                <input type="text" class="form-control" autocomplete="off">
+                                <input type="text" ng-model="user.contact_number" class="form-control" autocomplete="off">
                             </div>
                             <div class="input-group input-group-outline my-3">
                                 <label class="form-label">Email</label>
-                                <input type="email" class="form-control" autocomplete="off">
+                                <input type="email" ng-model="user.email" class="form-control" autocomplete="off">
                             </div>
                             <div class="input-group input-group-outline mb-3">
                                 <label class="form-label">Password</label>
-                                <input type="password" class="form-control" autocomplete="off">
+                                <input type="password" ng-model="user.password" class="form-control" autocomplete="off">
                             </div>
                             <div class="input-group input-group-outline mb-3">
                                 <label class="form-label">Confirm Password</label>
-                                <input type="password" class="form-control" autocomplete="off">
+                                <input type="password" ng-model="retypePassword" class="form-control" autocomplete="off">
                             </div>
                             <div class="text-center">
-                                <button type="button" class="btn bg-gradient-primary w-100 my-4 mb-2">Sign up</button>
+                                <button type="button" ng-click="formSubmit()" class="btn bg-gradient-primary w-100 my-4 mb-2">Sign up</button>
                             </div>
                             <p class="mt-4 text-sm text-center">
                                 Already have an account?<a href="#!login"> Sign in</a>

@@ -13,14 +13,14 @@
                         <div class="text-start" ng-form="loginForm">
                             <div class="input-group input-group-outline my-3">
                                 <label class="form-label">Email</label>
-                                <input type="email" class="form-control" autocomplete="off">
+                                <input type="email" ng-model="user.email" class="form-control" autocomplete="off">
                             </div>
                             <div class="input-group input-group-outline mb-3">
                                 <label class="form-label">Password</label>
-                                <input type="password" class="form-control" autocomplete="off">
+                                <input type="password" ng-model="user.password" class="form-control" autocomplete="off">
                             </div>
                             <div class="text-center">
-                                <button type="button" class="btn bg-gradient-primary w-100 my-4 mb-2">Sign in</button>
+                                <button type="button" ng-click="login()" class="btn bg-gradient-primary w-100 my-4 mb-2">Sign in</button>
                             </div>
                             <p class="mt-4 text-sm text-center">
                                 Don't have an account? <a href="#!sign-up">Sign up</a>
