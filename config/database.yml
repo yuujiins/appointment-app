@@ -81,6 +81,7 @@ test:
 #
 production:
   <<: *default
-  database: appointment_app_production
-  username: appointment_app
+  url: postgres://adminapp:sVRGDU0s0FdRKbcfgp07jwIY2iZ13ZSJ@dpg-cgknd5ceoogkndk40lvg-a/appointment_dd41
+  database: appointment_dd41
+  username: adminapp
   password: <%= ENV["APPOINTMENT_APP_DATABASE_PASSWORD"] %>
