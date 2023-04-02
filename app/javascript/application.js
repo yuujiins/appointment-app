@@ -3,9 +3,8 @@ import "angular"
 import "angular-route"
 
 //AngularJS Controllers
-import "./controllers/home.controller"
+import "home-controller"
 
-
-//Material UI
-import "./material/material-kit.min.js"
-import "./material/core/bootstrap.bundle.min.js"
+//Material
+import "material-kit"
+import "bootstrap"
